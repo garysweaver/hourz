@@ -12,20 +12,21 @@ Basically you start the app, add tasks, start a task, start another task, stop t
 
 == Building
 
-1. Install MacRuby 0.5 or later.
-2. Install HotCocoa
+Install MacRuby 0.5 or later.
+
+Install HotCocoa.
 
   $ sudo macgem hotcocoa
 
-3. Build the app and run it
+Build the app and run it.
 
   $ macrake
 
-4. Deploy it
+Deploy it.
 
   $ macrake deploy
 
-Debug it if needed
+Debug it if needed.
 
   $ macruby lib/application.rb --debug
   
@@ -49,7 +50,7 @@ It would be nice if the stop/start, edit, and delete were icons and took up less
 
 == Like to Help Develop It?
 
-Please contact me via GitHub or ticket if you would like to get involved. Feel free to fork the project.
+Please contact me if you would like to help develop Hourz. Feel free to fork it!
 
 == License
 

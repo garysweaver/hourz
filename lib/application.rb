@@ -10,6 +10,8 @@ class Hourz
   
   attr_accessor :tasks, :new_task_name_field, :task_to_edit, :edit_task_name_field, :table, :add_view, :edit_view
   
+  @debug = false
+  
   def start
     @tasks = []
     application :name => "Hourz" do |app|
@@ -87,7 +89,7 @@ class Hourz
   
   def load_tasks_from_file
     if !File.exist?("hourz.dat") && !File.exist?("hourz.bak")
-      alert :message => "Welcome to Hourz", :info => "Welcome to Hourz! Feel free to add some tasks and get started!"
+      alert :message => "Welcome to Hourz", :info => "Welcome to Hourz! Feel free to add some tasks and get started!" if @debug
       return
     end
     
@@ -111,7 +113,7 @@ class Hourz
   end
   
   def load_tasks_from_file_impl(filename)
-    alert :message => "Debug", :info => "Loading file '#{Pathname.pwd}/#{filename}'"
+    alert :message => "Debug", :info => "Loading file '#{Pathname.pwd}/#{filename}'" if @debug
     f = File.open(filename, "r")
     tasks = Marshal.load(f)
     set_table_data
@@ -125,7 +127,7 @@ class Hourz
   end
   
   def save_tasks_to_file_impl(tasks, filename)
-    alert :message => "Debug", :info => "Saving file '#{Pathname.pwd}/#{filename}'"
+    alert :message => "Debug", :info => "Saving file '#{Pathname.pwd}/#{filename}'" if @debug
     f = File.open(filename, "w")
     tasks = Marshal.dump(tasks, f)
   end
@@ -161,7 +163,7 @@ class Hourz
       end
       save_tasks_to_file
     else
-      throw "Something clicked that we didn't handle! clickedColumn=#{@table.clickedColumn} clickedRow=#{@table.clickedRow}"
+      throw "Something clicked that we didn't handle! clickedColumn=#{@table.clickedColumn} clickedRow=#{@table.clickedRow}" if @debug
     end
     set_table_data
   end
@@ -241,7 +243,7 @@ private
       set_table_data
       @new_task_name_field.stringValue = ''
     else
-      alert :message => "Cannot create task", :info => "Please enter a task name. '#{name}' is invalid. @new_task_name_field.stringValue=#{@new_task_name_field.stringValue}. @edit_task_name_field.stringValue=#{@edit_task_name_field.stringValue}"
+      alert :message => "Cannot create task", :info => "Please enter a task name. '#{name}' is invalid."
     end
   end
   
@@ -253,7 +255,7 @@ private
       set_table_data
       @edit_task_name_field.stringValue = ''
     else
-      alert :message => "Cannot update task", :info => "Please enter a task name. '#{name}' is invalid. @new_task_name_field.stringValue=#{@new_task_name_field.stringValue}. @edit_task_name_field.stringValue=#{@edit_task_name_field.stringValue}"
+      alert :message => "Cannot update task", :info => "Please enter a task name. '#{name}' is invalid."
     end
   end
 end
