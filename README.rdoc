@@ -1,0 +1,56 @@
+= Hourz
+
+Hourz is a Mac OS X application written in HotCocoa/MacRuby as a standalone app that can track time spent on various tasks via task timers.
+
+== Installation
+
+For now, use macrake and/or macrake deploy until I make the built version available.
+
+== Use
+
+Basically you start the app, add tasks, start a task, start another task, stop the task, edit task names, delete tasks.
+
+== Building
+
+1. Install MacRuby 0.5 or later.
+2. Install HotCocoa
+
+  $ sudo macgem hotcocoa
+
+3. Build the app and run it
+
+  $ macrake
+
+4. Deploy it
+
+  $ macrake deploy
+
+Debug it if needed
+
+  $ macruby lib/application.rb --debug
+  
+Use ctrl-c in Terminal.app to kill the app if it gets hung.
+
+== Known Issues
+
+If you don't need it to persist data and just time tasks in-memory, it works great right now, although it is a bit simplistic (it is not much more than a multiple-stopwatch/multiple-timer type application at the moment).
+
+It persists task data to a local file, but Marshal and file persistence of tasks isn't working quite right yet (may be a bug in MacRuby 0.5, but don't know yet).
+
+Also, I'd hoped to have it automatically determine what day it was and put hours by those days and let you edit the hours, but all it does for now is to just track time spent on tasks.
+
+When you close the window, you are supposed to be able to maximize it again, but I don't have that working. So you have to right-click to Quit the app for now.
+
+It currently spits out a lot of alerts while I attempt to debug the tasks persistence to file.
+
+I couldn't yet figure out how to show/hide the add and edit portions of the window, so for now they are both showing at once.
+
+It would be nice if the stop/start, edit, and delete were icons and took up less space in the table. If there were a way to only let the column be as wide as the action name or icon, that would be best, but I don't know how to do that yet.
+
+== Like to Help Develop It?
+
+Please contact me via GitHub or ticket if you would like to get involved. Feel free to fork the project.
+
+== License
+
+Copyright (c) 2010 Gary S. Weaver, released under the MIT license.
