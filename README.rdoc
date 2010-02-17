@@ -2,9 +2,9 @@
 
 Hourz is a Mac OS X application written in HotCocoa/MacRuby as a standalone app that can track time spent on various tasks via task timers.
 
-== Installation
+== Download
 
-For now, use macrake and/or macrake deploy until I make the built version available.
+See downloads section in the website: http://garysweaver.github.com/hourz/
 
 == Use
 
