@@ -1,10 +1,10 @@
 = Hourz
 
-Hourz is a Mac OS X application written in HotCocoa/MacRuby as a standalone app that can track time spent on various tasks via task timers.
+{Hourz}[http://garysweaver.github.com/hourz] is a Mac OS X application written in {HotCocoa}[http://www.macruby.org/hotcocoa.html]/{MacRuby}[http://www.macruby.org/] as a standalone app that can track time spent on various tasks via task timers.
 
 == Download
 
-See downloads section in the website: http://garysweaver.github.com/hourz/
+See {downloads}[http://garysweaver.github.com/hourz] section in the website.
 
 == Use
 
@@ -12,9 +12,9 @@ Basically you start the app, add tasks, start a task, start another task, stop t
 
 == Building
 
-Install MacRuby 0.5 or later.
+Install {MacRuby}[http://www.macruby.org/] 0.5 or later.
 
-Install HotCocoa.
+Install {HotCocoa}[http://www.macruby.org/hotcocoa.html] 0.5.1 or later.
 
   $ sudo macgem hotcocoa
 
@@ -34,19 +34,21 @@ Use ctrl-c in Terminal.app to kill the app if it gets hung.
 
 == Known Issues
 
-If you don't need it to persist data and just time tasks in-memory, it works great right now, although it is a bit simplistic (it is not much more than a multiple-stopwatch/multiple-timer type application at the moment).
+The following are known issues. I'd put this in the {issue tracker}[http://github.com/garysweaver/hourz/issues], but this is easier for now.
 
-It persists task data to a local file, but Marshal and file persistence of tasks isn't working quite right yet (may be a bug in MacRuby 0.5, but don't know yet).
+* If you don't need it to persist data and just time tasks in-memory, it works great right now, although it is a bit simplistic. It is not much more than a multiple-stopwatch/multiple-timer type application at the moment.
 
-Also, I'd hoped to have it automatically determine what day it was and put hours by those days and let you edit the hours, but all it does for now is to just track time spent on tasks.
+* Persistence to file is not working. It corrupts task names and you lose the amount of time you spent on tasks.
 
-When you close the window, you are supposed to be able to maximize it again, but I don't have that working. So you have to right-click to Quit the app for now.
+* I'd hoped to have it automatically determine what day it was and put hours by those days and let you edit the hours, but all it does for now is to just track time spent on tasks.
 
-It currently spits out a lot of alerts while I attempt to debug the tasks persistence to file.
+* When you close the window, you are supposed to be able to maximize it again, but I don't have that working. So you have to right-click to Quit the app for now.
 
-I couldn't yet figure out how to show/hide the add and edit portions of the window, so for now they are both showing at once.
+* I couldn't yet figure out how to show/hide the add and edit portions of the window, so for now they are both showing at once.
 
-It would be nice if the stop/start, edit, and delete were icons and took up less space in the table. If there were a way to only let the column be as wide as the action name or icon, that would be best, but I don't know how to do that yet.
+* It would be nice if the stop/start, edit, and delete were icons and took up less space in the table. If there were a way to only let the column be as wide as the action name or icon, that would be best, but I don't know how to do that yet. I'm also considering not making the window resizable, since you can make the window too small in this version.
+
+If you have issues with Hourz, please add them to the {issue tracker}[http://github.com/garysweaver/hourz/issues].
 
 == Like to Help Develop It?
 
@@ -54,4 +56,4 @@ Please contact me if you would like to help develop Hourz. Feel free to fork it!
 
 == License
 
-Copyright (c) 2010 Gary S. Weaver, released under the MIT license.
+Copyright (c) 2010 Gary S. Weaver, released under the {MIT license}[http://github.com/garysweaver/hourz/blob/master/LICENSE].
