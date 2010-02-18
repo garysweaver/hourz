@@ -1,6 +1,6 @@
 = Hourz
 
-{Hourz}[http://garysweaver.github.com/hourz] is a Mac OS X application written in {HotCocoa}[http://www.macruby.org/hotcocoa.html]/{MacRuby}[http://www.macruby.org/] as a standalone app that can track time spent on various tasks via task timers.
+{Hourz}[http://garysweaver.github.com/hourz] is a Mac OS X application written in {HotCocoa}[http://www.macruby.org/hotcocoa.html] and {MacRuby}[http://www.macruby.org/] as a standalone app that can track time spent on various tasks via task timers.
 
 == Download
 
