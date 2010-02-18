@@ -34,7 +34,7 @@ Use ctrl-c in Terminal.app to kill the app if it gets hung.
 
 == Known Issues
 
-The following are known issues. I'd put this in the {issue tracker}[http://github.com/garysweaver/hourz/issues], but this is easier for now.
+The following are known issues:
 
 * If you don't need it to persist data and just time tasks in-memory, it works great right now, although it is a bit simplistic. It is not much more than a multiple-stopwatch/multiple-timer type application at the moment.
 
@@ -52,7 +52,7 @@ If you have issues with Hourz, please add them to the {issue tracker}[http://git
 
 == Like to Help Develop It?
 
-Please contact me if you would like to help develop Hourz. Feel free to fork it!
+Please contact me if you would like to help develop Hourz, and feel free to fork it if you can't wait.
 
 == License
 
