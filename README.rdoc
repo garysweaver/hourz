@@ -34,9 +34,9 @@ Use ctrl-c in Terminal.app to kill the app if it gets hung.
 
 == News
 
-* Persistence to file has been fixed, so you can save tasks now! Thanks to Isaac Kearse for the suggestion to use plist. It wasn't that straightforward to use in HotCocoa 0.5.1, so I made it work. :) 
+* Persistence to file has been fixed, so you can save tasks now! Thanks to {Isaac Kearse}[http://isaac.kearse.co.nz/] for the suggestion to use plist. It wasn't that straightforward to use in HotCocoa 0.5.1, so I made it work. :) 
 
-* Decided to axe window minimization and just either have the window show or not show, so it tracks time even while the application is off, so you can restart, etc.
+* Decided to axe window minimization and just either have the window show or not show.
 
 == Known Issues
 
