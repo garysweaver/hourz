@@ -5,6 +5,7 @@
 # Hash.from_plist({:data=>'mydata'}.to_plist), Array.from_plist(['x','y','z'].to_plist), AnObject.from_plist(an_object.to_plist)
 class Object
   
+  # from_plist is the same as the HotCocoa 0.5.1 version. Could remove it, but keeping it here for now, in case need to debug.
   def self.from_plist(data, mutability=:all)
     # not sure if this will work
     if data.respond_to?(:read)
@@ -48,7 +49,6 @@ class Object
         raise ArgumentError, "invalid format `#{format}'"
     end
     #error = Pointer.new(:object)
-    #raise "self is #{self}"    
     data = NSPropertyListSerialization.dataFromPropertyList(self,
       format:format,
       errorDescription:nil)

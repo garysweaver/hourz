@@ -19,7 +19,7 @@ class Hourz
       app.delegate = self
       
       @main_window = window(:size => [640, 480], :title => "Hourz", :center => true) do |win|
-        win.will_miniaturize { exit }
+        win.will_close { exit }
         win.view = layout_view(:layout => {:expand => [:width, :height],
                                            :padding => 0, :margin => 0}) do |vert|
           @add_view = layout_view(:frame => [0, 0, 0, 40], :mode => :horizontal,
@@ -54,6 +54,7 @@ class Hourz
           end
           vert << @edit_view
           
+          # this isn't working, so show both for now.
           #in_edit_mode
           
           vert << scroll_view(:layout => {:expand => [:width, :height]}) do |scroll|
@@ -115,8 +116,6 @@ class Hourz
   def load_tasks_from_file_impl(filename)
     alert :message => "Debug", :info => "Loading file '#{Pathname.pwd}/#{filename}'" if @debug
     f = File.open(filename, "r")
-    # note: could just as easily use Object.from_plist(f), but using Hash to be descriptive that it is what we expect to get
-    #data = Object.from_plist(f)
     data = from_ns(Object.from_plist(f))
     tasks = data[:tasks]
     f.close
@@ -124,15 +123,13 @@ class Hourz
   end
   
   def save_tasks_to_file    
-    #copy_file("hourz.dat", "hourz.bak") if File.exist?("hourz.dat")
+    copy_file("hourz.dat", "hourz.bak") if File.exist?("hourz.dat")
     save_tasks_to_file_impl(@tasks, "hourz.dat")
   end
   
   def save_tasks_to_file_impl(tasks, filename)
     alert :message => "Debug", :info => "Saving file '#{Pathname.pwd}/#{filename}'" if @debug
-    #data = {:tasks => @tasks}
     plist = to_ns(@tasks).to_plist
-    #throw "write plist data is #{plist}"
     f = File.open(filename, "w")
     f.write(plist)
     f.close
@@ -187,28 +184,16 @@ class Hourz
   def on_help(menu)
   end
   
-  # This is commented out, so the minimize menu item is disabled
+  # minimize menu item
   #def on_minimize(menu)
   #end
   
   # window/zoom
-  def on_zoom(menu)
-  end
+  #def on_zoom(menu)
+  #end
   
   # window/bring_all_to_front
   #def on_bring_all_to_front(menu)
-  #end
-  
-  #def applicationDockMenu(sender)
-    #menu do |dock|
-    #  @tasks.each do |task|
-    #    dock.item(:set_current_task,
-    #      :title => "#{task.name}",
-    #      :action => 'setCurrentTask:',
-    #      :representedObject => task
-    #    )
-    #  end
-    #end
   #end
   
 private
