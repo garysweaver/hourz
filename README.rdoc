@@ -32,17 +32,19 @@ Debug it if needed.
   
 Use ctrl-c in Terminal.app to kill the app if it gets hung.
 
+== News
+
+* Persistence to file has been fixed, so you can save tasks now! Thanks to Isaac Kearse for the suggestion to use plist. It wasn't that straightforward to use in HotCocoa 0.5.1, so I made it work. :) 
+
+* Decided to axe window minimization and just either have the window show or not show, so it tracks time even while the application is off, so you can restart, etc.
+
 == Known Issues
 
 The following are known issues:
 
-* If you don't need it to persist data and just time tasks in-memory, it works great right now, although it is a bit simplistic. It is not much more than a multiple-stopwatch/multiple-timer type application at the moment.
-
-* Persistence to file is not working. It corrupts task names and you lose the amount of time you spent on tasks.
+* It is a bit simplistic. It is not much more than a multiple-stopwatch/multiple-timer type application at the moment.
 
 * I'd hoped to have it automatically determine what day it was and put hours by those days and let you edit the hours, but all it does for now is to just track time spent on tasks.
-
-* When you close the window, you are supposed to be able to maximize it again, but I don't have that working. So you have to right-click to Quit the app for now.
 
 * I couldn't yet figure out how to show/hide the add and edit portions of the window, so for now they are both showing at once.
 
