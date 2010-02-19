@@ -3,6 +3,7 @@ require 'hotcocoa'
 require 'pathname'
 
 require File.expand_path(File.dirname(__FILE__)) + '/task'
+require File.expand_path(File.dirname(__FILE__)) + '/extends'
 
 class Hourz
 
@@ -74,8 +75,6 @@ class Hourz
       
       load_tasks_from_file
       
-      set_table_data
-      
       queue = Dispatch::Queue.new('hourz.refresh_data')
       # Refresh table data each second in seperate thread
       queue.async do
@@ -100,6 +99,7 @@ class Hourz
     
     begin
       @tasks = load_tasks_from_file_impl("hourz.dat")
+      set_table_data
     rescue Exception => e
       alert :message => "Problem loading tasks data", :info => "Could not load data from save file 'hourz.dat'. Error: #{e.message} {#{e.backtrace}"
       begin
@@ -115,8 +115,10 @@ class Hourz
   def load_tasks_from_file_impl(filename)
     alert :message => "Debug", :info => "Loading file '#{Pathname.pwd}/#{filename}'" if @debug
     f = File.open(filename, "r")
-    tasks = Marshal.load(f)
-    set_table_data
+    # note: could just as easily use Object.from_plist(f), but using Hash to be descriptive that it is what we expect to get
+    #data = Object.from_plist(f)
+    data = from_ns(Object.from_plist(f))
+    tasks = data[:tasks]
     f.close
     tasks
   end
@@ -128,8 +130,13 @@ class Hourz
   
   def save_tasks_to_file_impl(tasks, filename)
     alert :message => "Debug", :info => "Saving file '#{Pathname.pwd}/#{filename}'" if @debug
+    #data = {:tasks => @tasks}
+    plist = to_ns(@tasks).to_plist
+    #throw "write plist data is #{plist}"
     f = File.open(filename, "w")
-    tasks = Marshal.dump(tasks, f)
+    f.write(plist)
+    f.close
+    plist
   end
   
   # copy didn't work, so for now, just reuse unmarshal and marshal
@@ -205,6 +212,37 @@ class Hourz
   #end
   
 private
+  # TODO: Would be great if was generic and part of HotCocoa. Could only set things that have attr_accessors?
+  def from_ns(config)
+    tasks = []
+    a = config['tasks']
+    a.each do |h|
+      task = Task.new
+      task.id = h['id'] if h['id']
+      task.name = h['name'] if h['name']
+      task.start_time = h['start_time'] if h['start_time']
+      tasks << task
+    end
+    return {:tasks => tasks}
+  end
+
+  # NSPropertyListSerialization can only take NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary object.
+  # Container objects must also contain only these kinds of objects.
+  # nil is not valid, so all nils must be removed!
+  # TODO: Would be great if was generic and part of HotCocoa. Could only get things that have attr_accessors?
+  def to_ns(tasks)
+    a = []
+    tasks.each do |task|
+      h = {}
+      # reminder: it doesn't like nil values, so we can't set them if they are nil
+      h.merge!({:id => task.id}) if task.id
+      h.merge!({:name => task.name}) if task.name
+      h.merge!({:start_time => task.start_time}) if task.start_time
+      a << h
+    end
+    return {:tasks => a}
+  end
+  
   def in_add_mode
     #@edit_view.frame = [0, 0, 0, 0]
     #@edit_view.hidden = true
