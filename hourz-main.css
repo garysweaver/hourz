@@ -3,9 +3,22 @@
   margin-left: auto;
   margin-right: auto;
   text-align: left;
-  font: 13.34px helvetica, arial, freesans, clean, sans-serif;
-  *font-size: small;
 }
+
+body {
+    font: helvetica, arial, sans-serif;
+    font-size: 100%;
+    line-height: 1.125em;
+}
+
+.bodytext p {
+    font-size: 0.875em;
+}
+
+.sidenote {
+    font-size: 0.75em;
+}
+
 
 h1, h2, h3, h4, h5 {
   text-align: center;
@@ -19,4 +32,9 @@ img {
   width: 28px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#copyright {
+  font-size: 75%;
+  text-align: center;
 }
