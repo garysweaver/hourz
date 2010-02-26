@@ -1,0 +1,22 @@
+#content {
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font: 13.34px helvetica, arial, freesans, clean, sans-serif;
+  *font-size: small;
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: center;
+}
+
+img {
+  border: none;
+}
+
+#logo {
+  width: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
