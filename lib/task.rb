@@ -7,15 +7,12 @@ class Task
   @time = 0
   
   def display_time
-    t = get_time
+    total_seconds = get_time.to_i
     
-    seconds = t.to_i
-    minutes = (seconds / 60).to_i
-    hours = (minutes / 60).to_i
-    days = (hours / 24).to_i
-    hours = hours - (days * 24)
-    minutes = minutes - (hours * 60)
-    seconds = seconds - (minutes * 60)
+    days = total_seconds / 86400
+    hours = (total_seconds / 3600) - (days * 24)
+    minutes = (total_seconds / 60) - (hours * 60) - (days * 1440)
+    seconds = total_seconds % 60
     
     display = ''
     display_concat = ''

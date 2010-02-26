@@ -1,6 +1,6 @@
 name: Hourz
 load: lib/application.rb
-version: "1.1.0"
+version: "1.1.1"
 icon: resources/HotCocoa.icns
 info_string: "Copyright © 2010 Gary S. Weaver, released under the MIT license."
 resources:
